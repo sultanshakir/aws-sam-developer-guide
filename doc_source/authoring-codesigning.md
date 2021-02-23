@@ -12,7 +12,7 @@ When you deploy a serverless application, Lambda performs validation checks on a
 
 ## Example<a name="authoring-codesigning-example"></a>
 
-### Creating a signing profile<a name="authoring-codesigning-example-signing-profile"></a>
+### Creating a signing profile<a name="authoring-codesigning-example-signing-profiles"></a>
 
 To create a signing profile, run the following command:
 
@@ -64,19 +64,19 @@ You can sign your code when packaging or deploying your application\. Specify th
 Signing your function code when packaging your application:
 
 ```
-sam package --signing-profile HelloWorld=MySigningProfile --s3-bucket test-bucket --output-template-file packaged.yaml
+sam package --signing-profiles HelloWorld=MySigningProfile --s3-bucket test-bucket --output-template-file packaged.yaml
 ```
 
 Signing both your function code and a layer that your function depends on, when packaging your application:
 
 ```
-sam package --signing-profile HelloWorld=MySigningProfile MyLayer=MySigningProfile --s3-bucket test-bucket --output-template-file packaged.yaml
+sam package --signing-profiles HelloWorld=MySigningProfile MyLayer=MySigningProfile --s3-bucket test-bucket --output-template-file packaged.yaml
 ```
 
 Signing your function code and a layer, then performing a deployment:
 
 ```
-sam deploy --signing-profile HelloWorld=MySigningProfile MyLayer=MySigningProfile --s3-bucket test-bucket --template-file packaged.yaml --stack-name --region us-east-1 --capabilities CAPABILITY_IAM
+sam deploy --signing-profiles HelloWorld=MySigningProfile MyLayer=MySigningProfile --s3-bucket test-bucket --template-file packaged.yaml --stack-name --region us-east-1 --capabilities CAPABILITY_IAM
 ```
 
 ## Providing signing profiles with `sam deploy --guided`<a name="authoring-codesigning-sam-deploy-guided"></a>
